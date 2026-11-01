@@ -68,5 +68,12 @@
 <dialog id="modal"><form method="dialog" id="modalForm"><div class="modal-head"><h2 id="modalTitle">Nuevo movimiento</h2><button class="icon-btn" value="cancel" aria-label="Cerrar">×</button></div><div id="modalBody"></div><div class="modal-actions"><button class="secondary" value="cancel">Cancelar</button><button class="primary" id="modalSubmit" value="default">Guardar</button></div></form></dialog>
 <div class="toast" id="toast"></div>
 <script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+</script>
 </body>
 </html>
