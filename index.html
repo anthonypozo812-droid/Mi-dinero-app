@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101713">
+<meta name="description" content="Administrador personal de dinero y presupuestos.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<title>Mi Dinero</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-icon">₿</div><div><strong>Mi Dinero</strong><small>Finanzas personales</small></div></div>
+  <button class="icon-btn" id="exportBtn" title="Respaldo">⇧</button>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">DINERO TOTAL</div>
+    <div class="balance" id="totalBalance">$0,00</div>
+    <div class="balance-sub">Todo tu dinero, en un solo lugar</div>
+    <div class="summary-grid">
+      <div><span>Sin asignar</span><b id="unassigned">$0,00</b></div>
+      <div><span>En presupuestos</span><b id="inBudgets">$0,00</b></div>
+      <div><span>En ahorro</span><b id="savings">$0,00</b></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h2>Movimientos</h2><p>Registra ingresos y gastos</p></div></div>
+    <div class="actions">
+      <button class="primary" id="incomeBtn">＋ Ingreso</button>
+      <button class="secondary" id="expenseBtn">− Gasto</button>
+      <button class="secondary" id="allocateBtn">⇄ Asignar dinero</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h2>Mis presupuestos</h2><p id="monthLabel"></p></div><button class="text-btn" id="addCategoryBtn">＋ Categoría</button></div>
+    <div id="budgets" class="budget-list"></div>
+    <div class="empty hidden" id="budgetEmpty">Todavía no tienes presupuestos. Asigna dinero a una categoría para comenzar.</div>
+  </section>
+
+  <section class="section savings-card">
+    <div class="section-head"><div><h2>Mi ahorro</h2><p>Dinero reservado y sobrantes mensuales</p></div><span class="savings-icon">✦</span></div>
+    <div class="saving-amount" id="savingsLarge">$0,00</div>
+    <p class="muted">Al cerrar el mes, lo que quede en cada presupuesto se sumará aquí automáticamente.</p>
+    <button class="secondary full" id="closeMonthBtn">Cerrar mes y pasar sobrantes a ahorro</button>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h2>Últimos movimientos</h2><p>Actividad reciente</p></div></div>
+    <div id="transactions" class="transactions"></div>
+    <div class="empty hidden" id="txEmpty">Tus movimientos aparecerán aquí.</div>
+  </section>
+
+  <section class="section tools">
+    <h2>Mis datos</h2>
+    <div class="actions">
+      <button class="secondary" id="importBtn">Importar respaldo</button>
+      <button class="secondary danger" id="resetBtn">Borrar todos los datos</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json" hidden>
+    <p class="muted tiny">Tus datos se guardan en este dispositivo. Exporta un respaldo periódicamente para no perderlos si borras los datos del navegador o cambias de teléfono.</p>
+  </section>
+</main>
+<nav class="bottom-nav"><span class="active">⌂<small>Inicio</small></span><span>▤<small>Presupuestos</small></span><span>◈<small>Ahorro</small></span></nav>
+<dialog id="modal"><form method="dialog" id="modalForm"><div class="modal-head"><h2 id="modalTitle">Nuevo movimiento</h2><button class="icon-btn" value="cancel" aria-label="Cerrar">×</button></div><div id="modalBody"></div><div class="modal-actions"><button class="secondary" value="cancel">Cancelar</button><button class="primary" id="modalSubmit" value="default">Guardar</button></div></form></dialog>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

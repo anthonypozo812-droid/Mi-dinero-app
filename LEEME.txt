@@ -1,0 +1,25 @@
+MI DINERO - PRIMERA VERSION OFFLINE
+
+Archivos:
+- index.html: pantalla de la aplicación
+- styles.css: diseño oscuro
+- app.js: presupuestos, ingresos, gastos y ahorro
+- manifest.webmanifest: configuración de instalación
+- sw.js: caché para funcionamiento sin conexión una vez instalada/cargada desde HTTPS
+
+IMPORTANTE:
+Esta carpeta contiene una aplicación web progresiva (PWA), no un APK.
+Para instalarla como aplicación desde Chrome Android, los archivos deben estar publicados en una dirección HTTPS.
+Después de abrir esa dirección en Chrome: menú ⋮ > Instalar aplicación o Añadir a pantalla de inicio.
+Una vez cargada e instalada, puede abrir y registrar movimientos sin conexión.
+Los datos se guardan localmente en el navegador de ese dispositivo. Usa el botón de respaldo para exportar JSON y guardarlo en un lugar seguro.
+
+FUNCIONAMIENTO:
+- El dinero ingresado se suma al saldo y queda sin asignar.
+- Asignar dinero mueve el monto desde "sin asignar" a un presupuesto.
+- Un gasto reduce el presupuesto elegido y el saldo total.
+- Al cerrar el mes, el sobrante de cada presupuesto se mueve a ahorro.
+- Los presupuestos se limpian al cerrar el mes; el dinero sin asignar permanece disponible.
+- No hay conexión bancaria ni transferencia bancaria real: el ahorro es una separación interna.
+
+Actualización: incluye iconos PWA 192x192 y 512x512. Al abrir la app por primera vez en un mes nuevo, pasa a ahorro los sobrantes del mes anterior automáticamente.
